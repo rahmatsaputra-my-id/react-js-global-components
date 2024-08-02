@@ -1,12 +1,15 @@
 {
   "name": "@rahmatsaputra-my-id/react-js-global-components",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "files": [
     "dist"
   ],
-  "repository": "git://github.com/rahmatsaputra-my-id/react-js-global-components.git",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rahmatsaputra-my-id/react-js-global-components.git"
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },

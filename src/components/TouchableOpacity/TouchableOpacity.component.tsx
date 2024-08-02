@@ -2,23 +2,17 @@ import { FC } from 'react';
 import { styles } from './TouchableOpacity.component.styles';
 import { ITouchableOpacity } from './TouchableOpacity.types';
 
-const TouchableOpacity: FC<ITouchableOpacity> = ({
-  ref,
-  idx,
-  onPress,
-  styleContainer,
-  children,
-}) => {
+const TouchableOpacity: FC<ITouchableOpacity> = ({ children, idx, onPress, ref, style }) => {
   const handleOnpress: any = () => {
     if (onPress) onPress();
   };
 
   return (
     <div
-      ref={ref && ref}
       key={idx && idx}
-      style={{ ...styles.content, ...styleContainer }}
       onClick={handleOnpress}
+      ref={ref && ref}
+      style={{ ...styles.content, ...style }}
     >
       {children}
     </div>
