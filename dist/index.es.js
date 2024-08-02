@@ -4207,19 +4207,24 @@ var jsxRuntimeExports = jsxRuntime.exports;
 
 var styles = {
     content: {
-        cursor: 'pointer',
         display: 'flex',
+        cursor: 'pointer',
     },
 };
 
 var TouchableOpacity = function (_a) {
-    var ref = _a.ref, idx = _a.idx, onPress = _a.onPress, styleContainer = _a.styleContainer, children = _a.children;
+    var children = _a.children, idx = _a.idx, onPress = _a.onPress, ref = _a.ref, style = _a.style;
     var handleOnpress = function () {
         if (onPress)
             onPress();
     };
-    return (jsxRuntimeExports.jsx("div", __assign({ ref: ref && ref, style: __assign(__assign({}, styles.content), styleContainer), onClick: handleOnpress }, { children: children }), idx && idx));
+    return (jsxRuntimeExports.jsx("div", __assign({ onClick: handleOnpress, ref: ref && ref, style: __assign(__assign({}, styles.content), style) }, { children: children }), idx && idx));
 };
 
-export { TouchableOpacity };
+var View = function (_a) {
+    var _b = _a.bottom, bottom = _b === void 0 ? 0 : _b, children = _a.children, _c = _a.display, display = _c === void 0 ? 'flex' : _c, _d = _a.flexDirection, flexDirection = _d === void 0 ? 'column' : _d, _e = _a.left, left = _e === void 0 ? 0 : _e, _f = _a.ref, ref = _f === void 0 ? null : _f, _g = _a.right, right = _g === void 0 ? 0 : _g, _h = _a.style, style = _h === void 0 ? {} : _h, _j = _a.top, top = _j === void 0 ? 0 : _j;
+    return (jsxRuntimeExports.jsx("div", __assign({ ref: ref, style: __assign({ display: display, flexDirection: flexDirection, marginTop: top, marginRight: right, marginBottom: bottom, marginLeft: left }, style) }, { children: children })));
+};
+
+export { TouchableOpacity, View };
 //# sourceMappingURL=index.es.js.map
