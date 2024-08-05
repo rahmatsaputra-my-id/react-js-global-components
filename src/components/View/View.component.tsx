@@ -1,19 +1,19 @@
-import { FC } from 'react';
-import { IView } from './View.types';
+import { ReactNode } from 'react';
 
-const View: FC<IView> = ({
+import { IViewProps } from './View.types';
+
+const View = ({
   bottom = 0,
   children,
   display = 'flex',
   flexDirection = 'column',
   left = 0,
-  ref = null,
   right = 0,
   style = {},
   top = 0,
-}) => (
+  ...props
+}: IViewProps): ReactNode => (
   <div
-    ref={ref}
     style={{
       display,
       flexDirection,
@@ -23,6 +23,7 @@ const View: FC<IView> = ({
       marginLeft: left,
       ...style,
     }}
+    {...props}
   >
     {children}
   </div>

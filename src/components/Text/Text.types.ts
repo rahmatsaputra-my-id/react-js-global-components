@@ -1,13 +1,14 @@
 import { ReactNode } from 'react';
 
-export interface IViewProps {
+export interface ITextProps {
   bottom?: number;
+  center?: boolean;
   children: ReactNode;
-  display?: any;
-  flexDirection?: string;
+  color?: string;
   left?: number;
-  ref?: any;
+  lineHeight?: number;
   right?: number;
+  size?: number;
   style?: any;
   top?: number;
 }
