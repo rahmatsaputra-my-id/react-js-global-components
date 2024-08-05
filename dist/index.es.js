@@ -4267,6 +4267,9 @@ var Colors = {
     white25: '#F8F8F8',
     white50: '#F5F9FC',
     white75: '#E6E6E6',
+    theShop: {
+        primary: '#227AEA',
+    },
 };
 
 var styles$5 = {
@@ -4560,11 +4563,11 @@ var styles = {
 
 var TouchableOpacity = function (_a) {
     var children = _a.children, onPress = _a.onPress, style = _a.style, props = __rest(_a, ["children", "onPress", "style"]);
-    var handleOnpress = function () {
+    var handleOnPress = function () {
         if (onPress)
             onPress();
     };
-    return (jsxRuntimeExports.jsx("div", __assign({ onClick: handleOnpress, style: __assign(__assign({}, styles.content), style) }, props, { children: children })));
+    return (jsxRuntimeExports.jsx("div", __assign({ onClick: handleOnPress, style: __assign(__assign({}, styles.content), style) }, props, { children: children })));
 };
 
 export { Button, Colors, Countdown as CountDown, DropDown, Image, LoadingSpinner, PopUp, Swipeable, Text, TextInput, TouchableOpacity, View };
