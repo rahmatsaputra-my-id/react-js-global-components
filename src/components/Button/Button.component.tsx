@@ -6,6 +6,7 @@ import { LoadingSpinner } from '../LoadingSpinner';
 import { IButtonProps } from './Button.types';
 
 const Button: FC<IButtonProps> = ({
+  backgroundColor = Colors.black,
   bold = false,
   borderRadius = 8,
   bottom = 0,
@@ -19,15 +20,21 @@ const Button: FC<IButtonProps> = ({
   right = 0,
   size = 12,
   style = {},
-  transparent = false,
   top = 0,
+  transparent = false,
   ...props
 }: IButtonProps) => (
   <>
     <button
       style={{
         backgroundColor:
-          disabled || isLoading ? Colors.grey2 : transparent ? 'transparent' : Colors.black,
+          disabled || isLoading
+            ? Colors.grey2
+            : transparent
+            ? 'transparent'
+            : backgroundColor
+            ? backgroundColor
+            : Colors.black,
         borderRadius,
         color: Colors.white,
         fontSize: size,
