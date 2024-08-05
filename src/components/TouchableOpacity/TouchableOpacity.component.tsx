@@ -9,12 +9,12 @@ const TouchableOpacity = ({
   style,
   ...props
 }: ITouchableOpacityProps): ReactNode => {
-  const handleOnpress: any = () => {
+  const handleOnPress = () => {
     if (onPress) onPress();
   };
 
   return (
-    <div onClick={handleOnpress} style={{ ...styles.content, ...style }} {...props}>
+    <div onClick={handleOnPress} style={{ ...styles.content, ...style }} {...props}>
       {children}
     </div>
   );
