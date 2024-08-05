@@ -4363,7 +4363,7 @@ var Button = function (_a) {
 var reactExports = requireReact();
 
 var Text = function (_a) {
-    var _b = _a.bottom, bottom = _b === void 0 ? 0 : _b, _c = _a.center, center = _c === void 0 ? true : _c, children = _a.children, _d = _a.color, color = _d === void 0 ? Colors.black : _d, _e = _a.left, left = _e === void 0 ? 0 : _e, lineHeight = _a.lineHeight, _f = _a.right, right = _f === void 0 ? 0 : _f, _g = _a.size, size = _g === void 0 ? 12 : _g, _h = _a.style, style = _h === void 0 ? {} : _h, _j = _a.top, top = _j === void 0 ? 0 : _j, props = __rest(_a, ["bottom", "center", "children", "color", "left", "lineHeight", "right", "size", "style", "top"]);
+    var _b = _a.bottom, bottom = _b === void 0 ? 0 : _b, _c = _a.center, center = _c === void 0 ? false : _c, children = _a.children, _d = _a.color, color = _d === void 0 ? Colors.black : _d, _e = _a.left, left = _e === void 0 ? 0 : _e, lineHeight = _a.lineHeight, _f = _a.right, right = _f === void 0 ? 0 : _f, _g = _a.size, size = _g === void 0 ? 12 : _g, _h = _a.style, style = _h === void 0 ? {} : _h, _j = _a.top, top = _j === void 0 ? 0 : _j, props = __rest(_a, ["bottom", "center", "children", "color", "left", "lineHeight", "right", "size", "style", "top"]);
     return (jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: jsxRuntimeExports.jsx("p", __assign({ style: __assign({ marginTop: top, marginRight: right, marginBottom: bottom, marginLeft: left, color: color, fontSize: size, lineHeight: lineHeight, textAlign: center ? 'center' : 'left' }, style) }, props, { children: children })) }));
 };
 

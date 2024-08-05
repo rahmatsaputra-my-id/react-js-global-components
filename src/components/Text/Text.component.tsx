@@ -5,7 +5,7 @@ import { ITextProps } from './Text.types';
 
 const Text: FC<ITextProps> = ({
   bottom = 0,
-  center = true,
+  center = false,
   children,
   color = Colors.black,
   left = 0,
