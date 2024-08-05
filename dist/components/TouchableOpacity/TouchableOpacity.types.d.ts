@@ -1,8 +1,6 @@
 import { ReactNode } from 'react';
-export interface ITouchableOpacity {
+export interface ITouchableOpacityProps {
     children: ReactNode;
-    idx?: number;
     onPress?: any;
-    ref?: any;
     style?: any;
 }

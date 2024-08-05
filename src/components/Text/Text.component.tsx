@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
+import { FC } from 'react';
 import { Colors } from '../../constants/Colors';
 
 import { ITextProps } from './Text.types';
 
-const Text = ({
+const Text: FC<ITextProps> = ({
   bottom = 0,
   center = true,
   children,
@@ -15,23 +15,25 @@ const Text = ({
   style = {},
   top = 0,
   ...props
-}: ITextProps): ReactNode => (
-  <p
-    style={{
-      marginTop: top,
-      marginRight: right,
-      marginBottom: bottom,
-      marginLeft: left,
-      color,
-      fontSize: size,
-      lineHeight,
-      textAlign: center ? 'center' : 'left',
-      ...style,
-    }}
-    {...props}
-  >
-    {children}
-  </p>
+}: ITextProps) => (
+  <>
+    <p
+      style={{
+        marginTop: top,
+        marginRight: right,
+        marginBottom: bottom,
+        marginLeft: left,
+        color,
+        fontSize: size,
+        lineHeight,
+        textAlign: center ? 'center' : 'left',
+        ...style,
+      }}
+      {...props}
+    >
+      {children}
+    </p>
+  </>
 );
 
 export default Text;

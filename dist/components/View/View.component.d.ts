@@ -1,4 +1,4 @@
 import { FC } from 'react';
-import { IView } from './View.types';
-declare const View: FC<IView>;
+import { IViewProps } from './View.types';
+declare const View: FC<IViewProps>;
 export default View;

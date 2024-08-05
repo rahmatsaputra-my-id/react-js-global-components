@@ -1,15 +1,15 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { FC, ReactNode, useEffect, useState } from 'react';
 import { ICountDownProps, TItems } from './CountDown.types';
 import { View } from '../View';
 import { Text } from '../Text';
 import { styles } from './CountDown.component.style';
 
-const Countdown = ({
+const Countdown: FC<ICountDownProps> = ({
   cardStyle,
   containerStyle,
   fontStyle,
   weddingDate,
-}: ICountDownProps): ReactNode => {
+}: ICountDownProps) => {
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);

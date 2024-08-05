@@ -1,4 +1,4 @@
-import { FC } from 'react';
-import { ITouchableOpacity } from './TouchableOpacity.types';
-declare const TouchableOpacity: FC<ITouchableOpacity>;
+import { ReactNode } from 'react';
+import { ITouchableOpacityProps } from './TouchableOpacity.types';
+declare const TouchableOpacity: ({ children, onPress, style, ...props }: ITouchableOpacityProps) => ReactNode;
 export default TouchableOpacity;

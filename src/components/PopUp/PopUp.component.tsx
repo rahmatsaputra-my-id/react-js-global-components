@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { FC } from 'react';
 import { View } from '../View';
 import { Text } from '../Text';
 import { Button } from '../Button';
@@ -6,7 +6,7 @@ import { Button } from '../Button';
 import { IPopUpProps } from './PopUp.types';
 import { styles } from './PopUp.component.styles';
 
-const PopUp = ({ popUpData, isLoading = false, visible = false }: IPopUpProps): ReactNode =>
+const PopUp: FC<IPopUpProps> = ({ popUpData, isLoading = false, visible = false }: IPopUpProps) =>
   visible ? (
     <View style={styles.container}>
       <View style={styles.card}>

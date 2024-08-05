@@ -24,6 +24,18 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
 typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
     var e = new Error(message);
     return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
@@ -4205,6 +4217,334 @@ if (process.env.NODE_ENV === 'production') {
 
 var jsxRuntimeExports = jsxRuntime.exports;
 
+var Colors = {
+    black: '#000000',
+    blackTransparent15: 'rgba(0, 0, 0, 0.15)',
+    blackTransparent7: 'rgba(0, 0, 0, 0.7)',
+    black100: '#1A1A1A',
+    blue: '#227AEA',
+    blueTransparent: 'rgba(93, 102, 147, 0.5)',
+    backgroundColor: '#F8F8F8',
+    backgroundColorModal: 'rgba(0, 26, 65, 0.7)',
+    boxShadow: '1px 2px 9px #000',
+    boxShadowCard: '1px 2px 9px rgba(0, 0, 0, 0.3)',
+    boxShadowImage: '0px 5px 5px 0px rgba(0, 0, 0, 0.5)',
+    brownishGrey: '#646464',
+    darkBlue: '#1D242F',
+    darkBlueBlack: '#242426',
+    darkBlueWhite: '#252F3C',
+    gradientWhite: 'linear-gradient(#FFFFFF, transparent)',
+    green1: '#008388',
+    green50: '#C6E4DC',
+    green60: '#3D9A62',
+    green100: '#00986D',
+    grey2: '#D8D8D8',
+    grey3: '#979797',
+    grey4: '#FCFCFC',
+    grey5: '#B0B0B0',
+    grey6: '#E7E7E7',
+    grey7: '#E5E5E5',
+    grey8: 'rgba(42, 42, 42, 0.5)',
+    grey75: '#A7B7C5',
+    grey80: '#66707A',
+    lightishRed: '#FF343A',
+    orange: '#E28612',
+    orange50: '#FFD8A1',
+    palePeach: '#FFD6A2',
+    platinum: '#E9E4E4',
+    pink: '#F2EBEC',
+    red: '#D45757',
+    red50: '#FABDBE',
+    red60: '#D90B10',
+    red100: '#FF4C47',
+    red150: '#C52025',
+    red200: '#A56767',
+    redTransparent: '#E4DAD9',
+    shadow: 'rgba(32, 32, 35, 0.1)',
+    shadow10: 'rgba(26, 26, 26, 0.7)',
+    white: '#FFFFFF',
+    whiteTransparent: 'rgba(250, 250, 250, 1)',
+    white25: '#F8F8F8',
+    white50: '#F5F9FC',
+    white75: '#E6E6E6',
+};
+
+var styles$5 = {
+    content: {
+        display: 'flex',
+        justifyContent: 'center',
+        border: 'none',
+        outline: 'none',
+        cursor: 'pointer',
+        opacity: 1,
+        transition: 'opacity 300ms ease',
+    },
+};
+
+var View = function (_a) {
+    var _b = _a.bottom, bottom = _b === void 0 ? 0 : _b, children = _a.children, _c = _a.display, display = _c === void 0 ? 'flex' : _c, _d = _a.flexDirection, flexDirection = _d === void 0 ? 'column' : _d, _e = _a.left, left = _e === void 0 ? 0 : _e, _f = _a.right, right = _f === void 0 ? 0 : _f, _g = _a.style, style = _g === void 0 ? {} : _g, _h = _a.top, top = _h === void 0 ? 0 : _h, props = __rest(_a, ["bottom", "children", "display", "flexDirection", "left", "right", "style", "top"]);
+    return (jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: jsxRuntimeExports.jsx("div", __assign({ style: __assign({ display: display, flexDirection: flexDirection, marginTop: top, marginRight: right, marginBottom: bottom, marginLeft: left }, style) }, props, { children: children })) }));
+};
+
+var styles$4 = {
+    content: {
+        display: 'flex',
+        justifyContent: 'center',
+        border: 'none',
+        outline: 'none',
+        cursor: 'pointer',
+        opacity: 1,
+        transition: 'opacity 300ms ease',
+    },
+    loadingSpinnerContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: window.innerHeight,
+    },
+};
+
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css_248z = "@keyframes spinner {\r\n  0% {\r\n    transform: rotate(0deg);\r\n  }\r\n\r\n  100% {\r\n    transform: rotate(360deg);\r\n  }\r\n}\r\n\r\n.loading-spinner {\r\n  width: 15px;\r\n  height: 15px;\r\n  /* Light grey */\r\n  border: 4px solid #ffffff;\r\n  /* Black */\r\n  border-top: 4px solid #000000;\r\n  border-radius: 50%;\r\n  animation: spinner 1s linear infinite;\r\n}\r\n\r\n.loading-spinner-section {\r\n  width: 120px;\r\n  height: 120px;\r\n  /* Light grey */\r\n  border: 15px solid rgb(220, 220, 226);\r\n  /* Black */\r\n  border-top: 15px solid #000000;\r\n  border-radius: 50%;\r\n  animation: spinner 1.5s linear infinite;\r\n}\r\n\r\n.loading-spinner-page {\r\n  width: 200px;\r\n  height: 200px;\r\n  /* Light grey */\r\n  border: 40px solid rgb(220, 220, 226);\r\n  /* Black */\r\n  border-top: 40px solid #000000;\r\n  border-radius: 50%;\r\n  animation: spinner 1.5s linear infinite;\r\n}\r\n";
+styleInject(css_248z);
+
+var LoadingSpinner = function (_a) {
+    var _b = _a.loadingType, loadingType = _b === void 0 ? false : _b;
+    var _renderSpinnerComponent = function () { return jsxRuntimeExports.jsx("div", { className: "loading-spinner" }); };
+    var _renderSpinnerSection = function () { return (jsxRuntimeExports.jsx(View, __assign({ style: styles$4.loadingSpinnerContainer }, { children: jsxRuntimeExports.jsx("div", { className: "loading-spinner-section" }) }))); };
+    var _renderSpinnerPage = function () { return (jsxRuntimeExports.jsx(View, __assign({ style: styles$4.loadingSpinnerContainer }, { children: jsxRuntimeExports.jsx("div", { className: "loading-spinner-page" }) }))); };
+    return (jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: loadingType === 'page'
+            ? _renderSpinnerPage()
+            : loadingType === 'section'
+                ? _renderSpinnerSection()
+                : _renderSpinnerComponent() }));
+};
+
+var Button = function (_a) {
+    var _b = _a.bold, bold = _b === void 0 ? false : _b, _c = _a.borderRadius, borderRadius = _c === void 0 ? 8 : _c, _d = _a.bottom, bottom = _d === void 0 ? 0 : _d, _e = _a.center, center = _e === void 0 ? true : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, _g = _a.isLoading, isLoading = _g === void 0 ? false : _g, label = _a.label, _h = _a.left, left = _h === void 0 ? 0 : _h, _j = _a.onPress, onPress = _j === void 0 ? function () { } : _j, _k = _a.padding, padding = _k === void 0 ? 16 : _k, _l = _a.right, right = _l === void 0 ? 0 : _l, _m = _a.size, size = _m === void 0 ? 12 : _m, _o = _a.style, style = _o === void 0 ? {} : _o, _p = _a.transparent, transparent = _p === void 0 ? false : _p, _q = _a.top, top = _q === void 0 ? 0 : _q, props = __rest(_a, ["bold", "borderRadius", "bottom", "center", "disabled", "isLoading", "label", "left", "onPress", "padding", "right", "size", "style", "transparent", "top"]);
+    return (jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: jsxRuntimeExports.jsxs("button", __assign({ style: __assign(__assign({ backgroundColor: disabled || isLoading ? Colors.grey2 : transparent ? 'transparent' : Colors.black, borderRadius: borderRadius, color: Colors.white, fontSize: size, fontWeight: bold && 'bold', marginTop: top, marginRight: right, marginBottom: bottom, marginLeft: left, padding: padding, textAlign: center ? 'center' : 'left' }, style), styles$5.content), disabled: isLoading || disabled, onClick: onPress, type: 'submit' }, props, { children: [!isLoading ? label : null, isLoading && jsxRuntimeExports.jsx(LoadingSpinner, { loadingType: false })] })) }));
+};
+
+var reactExports = requireReact();
+
+var Text = function (_a) {
+    var _b = _a.bottom, bottom = _b === void 0 ? 0 : _b, _c = _a.center, center = _c === void 0 ? true : _c, children = _a.children, _d = _a.color, color = _d === void 0 ? Colors.black : _d, _e = _a.left, left = _e === void 0 ? 0 : _e, lineHeight = _a.lineHeight, _f = _a.right, right = _f === void 0 ? 0 : _f, _g = _a.size, size = _g === void 0 ? 12 : _g, _h = _a.style, style = _h === void 0 ? {} : _h, _j = _a.top, top = _j === void 0 ? 0 : _j, props = __rest(_a, ["bottom", "center", "children", "color", "left", "lineHeight", "right", "size", "style", "top"]);
+    return (jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: jsxRuntimeExports.jsx("p", __assign({ style: __assign({ marginTop: top, marginRight: right, marginBottom: bottom, marginLeft: left, color: color, fontSize: size, lineHeight: lineHeight, textAlign: center ? 'center' : 'left' }, style) }, props, { children: children })) }));
+};
+
+var styles$3 = {
+    cardWrapper: {
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'center',
+    },
+    cardBox: {
+        backgroundColor: Colors.whiteTransparent,
+        alignItems: 'center',
+        paddingTop: 12,
+        paddingBottom: 12,
+        paddingLeft: 16,
+        paddingRight: 16,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderStyle: 'solid',
+        borderColor: Colors.red200,
+    },
+    cardTitle: {
+        color: Colors.red200,
+        fontSize: 22,
+        textAlign: 'center',
+        lineHeight: 1,
+        marginBottom: 4,
+    },
+    cardDescription: {
+        color: Colors.red200,
+        fontSize: 18,
+        textAlign: 'center',
+        lineHeight: 1,
+    },
+};
+
+var Countdown = function (_a) {
+    var _b;
+    var cardStyle = _a.cardStyle, containerStyle = _a.containerStyle, fontStyle = _a.fontStyle, weddingDate = _a.weddingDate;
+    var _c = reactExports.useState(0), days = _c[0], setDays = _c[1];
+    var _d = reactExports.useState(0), hours = _d[0], setHours = _d[1];
+    var _e = reactExports.useState(0), minutes = _e[0], setMinutes = _e[1];
+    var _f = reactExports.useState(0), seconds = _f[0], setSeconds = _f[1];
+    var data = [
+        {
+            label: 'Hari',
+            value: days,
+        },
+        {
+            label: 'Jam',
+            value: hours,
+        },
+        {
+            label: 'Menit',
+            value: minutes,
+        },
+        {
+            label: 'Detik',
+            value: seconds,
+        },
+    ];
+    reactExports.useEffect(function () {
+        var getTimeRemaining = function () {
+            var _a;
+            var now = new Date().getTime();
+            var countdownDate = new Date((_a = weddingDate === null || weddingDate === void 0 ? void 0 : weddingDate.reception) === null || _a === void 0 ? void 0 : _a.start).getTime();
+            var timeDifference = countdownDate - now;
+            var oneDay = 1000 * 60 * 60 * 24;
+            var oneHour = 1000 * 60 * 60;
+            var oneMinute = 1000 * 60;
+            setDays(Math.floor(timeDifference / oneDay));
+            setHours(Math.floor((timeDifference % oneDay) / oneHour));
+            setMinutes(Math.floor((timeDifference % oneHour) / oneMinute));
+            setSeconds(Math.floor((timeDifference % oneMinute) / 1000));
+        };
+        var intervalId = setInterval(getTimeRemaining, 1000);
+        return function () { return clearInterval(intervalId); };
+    }, [(_b = weddingDate === null || weddingDate === void 0 ? void 0 : weddingDate.reception) === null || _b === void 0 ? void 0 : _b.start]);
+    var renderCardBox = function (_a, idx) {
+        var label = _a.label, value = _a.value;
+        return (jsxRuntimeExports.jsxs(View, __assign({ style: __assign(__assign({}, styles$3.cardBox), { cardStyle: cardStyle, marginRight: idx === data.length - 1 ? 0 : 8 }) }, { children: [jsxRuntimeExports.jsx(Text, { style: __assign(__assign({}, styles$3.cardTitle), { fontStyle: fontStyle }), children: value ? (value < 0 ? '00' : value) : '' }), jsxRuntimeExports.jsx(Text, { children: label, style: __assign(__assign({}, styles$3.cardDescription), { fontStyle: fontStyle }) })] }), idx));
+    };
+    var render = function () { return (jsxRuntimeExports.jsx(View, __assign({ style: __assign(__assign({}, styles$3.cardWrapper), { containerStyle: containerStyle }) }, { children: data === null || data === void 0 ? void 0 : data.map(function (val, idx) { return renderCardBox(val, idx); }) }))); };
+    return render();
+};
+
+var DropDown = function (_a) {
+    var _b = _a.backgroundColor, backgroundColor = _b === void 0 ? Colors.darkBlue : _b, _c = _a.bottom, bottom = _c === void 0 ? 0 : _c, _d = _a.color, color = _d === void 0 ? Colors.grey2 : _d, _e = _a.fontSize, fontSize = _e === void 0 ? 12 : _e, _f = _a.id, id = _f === void 0 ? 'dropdown' : _f, _g = _a.left, left = _g === void 0 ? 0 : _g, _h = _a.onChange, onChange = _h === void 0 ? function () { } : _h, _j = _a.options, options = _j === void 0 ? [
+        { value: 'y', label: 'Present' },
+        { value: 'n', label: 'Not Present' },
+    ] : _j, _k = _a.right, right = _k === void 0 ? 0 : _k, _l = _a.style, style = _l === void 0 ? {} : _l, _m = _a.top, top = _m === void 0 ? 0 : _m, props = __rest(_a, ["backgroundColor", "bottom", "color", "fontSize", "id", "left", "onChange", "options", "right", "style", "top"]);
+    return (jsxRuntimeExports.jsx("select", __assign({ id: id, onChange: onChange }, props, { style: __assign({ backgroundColor: backgroundColor, color: color, fontSize: fontSize, marginTop: top, marginRight: right, marginBottom: bottom, marginLeft: left }, style) }, { children: options === null || options === void 0 ? void 0 : options.map(function (_a, idx) {
+            var value = _a.value, label = _a.label;
+            return (jsxRuntimeExports.jsx("option", __assign({ value: value }, { children: label }), idx));
+        }) })));
+};
+
+var Image = function (_a) {
+    var _b = _a.bottom, bottom = _b === void 0 ? 0 : _b, _c = _a.center, center = _c === void 0 ? false : _c, _d = _a.height, height = _d === void 0 ? 16 : _d, _e = _a.left, left = _e === void 0 ? 0 : _e, _f = _a.resizeMode, resizeMode = _f === void 0 ? 'contain' : _f, _g = _a.right, right = _g === void 0 ? 0 : _g, _h = _a.style, style = _h === void 0 ? {} : _h, _j = _a.top, top = _j === void 0 ? 0 : _j, _k = _a.width, width = _k === void 0 ? 16 : _k, props = __rest(_a, ["bottom", "center", "height", "left", "resizeMode", "right", "style", "top", "width"]);
+    return (jsxRuntimeExports.jsx("img", __assign({ style: __assign({ height: height, marginBottom: bottom, marginRight: right, marginLeft: left, marginTop: top, resizeMode: resizeMode, textAlign: center ? 'center' : 'left', width: width }, style) }, props)));
+};
+
+var styles$2 = {
+    container: {
+        position: 'fixed',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    },
+    card: {
+        boxShadow: Colors.boxShadow,
+        padding: 24,
+        borderRadius: 8,
+        backgroundColor: Colors.grey7,
+        width: 300,
+        justifyContent: 'space-between',
+    },
+    headerTitle: {
+        alignSelf: 'center',
+        marginBottom: 16,
+        fontWeight: 'bold',
+        fontSize: 24,
+    },
+    headerDescription: {
+        alignSelf: 'center',
+        marginBottom: 50,
+        fontSize: 18,
+    },
+};
+
+var PopUp = function (_a) {
+    var popUpData = _a.popUpData, _b = _a.isLoading, isLoading = _b === void 0 ? false : _b, _c = _a.visible, visible = _c === void 0 ? false : _c;
+    return visible ? (jsxRuntimeExports.jsx(View, __assign({ style: styles$2.container }, { children: jsxRuntimeExports.jsxs(View, __assign({ style: styles$2.card }, { children: [jsxRuntimeExports.jsxs(View, { children: [jsxRuntimeExports.jsx(Text, { style: styles$2.headerTitle, children: popUpData === null || popUpData === void 0 ? void 0 : popUpData.title }), jsxRuntimeExports.jsx(Text, { style: styles$2.headerDescription, children: popUpData === null || popUpData === void 0 ? void 0 : popUpData.description })] }), jsxRuntimeExports.jsx(Button, { isLoading: isLoading, label: popUpData === null || popUpData === void 0 ? void 0 : popUpData.labelAccept, onPress: popUpData === null || popUpData === void 0 ? void 0 : popUpData.onPressAccept })] })) }))) : null;
+};
+
+var Swipeable = function (_a) {
+    var children = _a.children, _b = _a.onSwipeLeft, onSwipeLeft = _b === void 0 ? function () { } : _b, _c = _a.onSwipeRight, onSwipeRight = _c === void 0 ? function () { } : _c, _d = _a.style, style = _d === void 0 ? {} : _d, props = __rest(_a, ["children", "onSwipeLeft", "onSwipeRight", "style"]);
+    var _e = reactExports.useState(null), startX = _e[0], setStartX = _e[1];
+    var _f = reactExports.useState(50), threshold = _f[0]; _f[1]; // Minimum swipe distance (pixels)
+    var handleTouchStart = function (event) {
+        var _a, _b;
+        setStartX((_b = (_a = event === null || event === void 0 ? void 0 : event.touches) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.clientX); // Store initial touch position (X-coordinate)
+    };
+    var handleTouchEnd = function (event) {
+        var _a, _b;
+        if (startX !== null) {
+            var endX = (_b = (_a = event === null || event === void 0 ? void 0 : event.changedTouches) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.clientX;
+            var deltaX = endX - startX;
+            if (deltaX > threshold) {
+                onSwipeLeft();
+            }
+            else if (deltaX < -threshold) {
+                onSwipeRight();
+            }
+            setStartX(null); // Reset touch position for next swipe
+        }
+    };
+    return (jsxRuntimeExports.jsx("div", __assign({ style: style, onTouchStart: handleTouchStart, onTouchEnd: handleTouchEnd }, props, { children: children })));
+};
+
+var styles$1 = {
+    label: {
+        marginBottom: 4,
+        fontSize: 14,
+    },
+    labelError: {
+        marginTop: 2,
+        fontSize: 14,
+        color: Colors.red,
+        maxWidth: 300,
+    },
+    textArea: {
+        paddingTop: 8,
+        paddingLeft: 8,
+        paddingRight: 8,
+        paddingBottom: 16,
+    },
+    textInput: {
+        padding: 8,
+    },
+};
+
+var TextInput = function (_a) {
+    var _b = _a.bottom, bottom = _b === void 0 ? 0 : _b, _c = _a.borderColor, borderColor = _c === void 0 ? Colors.grey2 : _c, _d = _a.borderRadius, borderRadius = _d === void 0 ? 4 : _d, _e = _a.center, center = _e === void 0 ? false : _e, _f = _a.left, left = _f === void 0 ? 0 : _f, _g = _a.label, label = _g === void 0 ? false : _g, _h = _a.labelError, labelError = _h === void 0 ? false : _h, _j = _a.multiline, multiline = _j === void 0 ? false : _j, _k = _a.padding, padding = _k === void 0 ? 0 : _k, _l = _a.right, right = _l === void 0 ? 0 : _l, _m = _a.style, style = _m === void 0 ? {} : _m, _o = _a.styleLabel, styleLabel = _o === void 0 ? {} : _o, _p = _a.top, top = _p === void 0 ? 0 : _p, _q = _a.width, width = _q === void 0 ? 200 : _q, props = __rest(_a, ["bottom", "borderColor", "borderRadius", "center", "left", "label", "labelError", "multiline", "padding", "right", "style", "styleLabel", "top", "width"]);
+    return (jsxRuntimeExports.jsxs(View, __assign({ style: __assign({ marginTop: top, marginRight: right, marginBottom: bottom, marginLeft: left, padding: padding }, style) }, { children: [label && jsxRuntimeExports.jsx(Text, { style: __assign(__assign({}, styles$1.label), styleLabel), children: label }), multiline ? (jsxRuntimeExports.jsx("textarea", __assign({ type: 'text', style: __assign({ borderColor: borderColor, borderRadius: borderRadius, width: width, textAlign: center ? 'center' : 'left' }, styles$1.textArea) }, props))) : (jsxRuntimeExports.jsx("input", __assign({ type: 'text', style: __assign({ borderColor: borderColor, borderRadius: borderRadius, textAlign: center ? 'center' : 'left', width: width }, styles$1.textInput) }, props))), labelError ? jsxRuntimeExports.jsx(Text, { style: styles$1.labelError, children: labelError }) : null] })));
+};
+
 var styles = {
     content: {
         display: 'flex',
@@ -4213,18 +4553,13 @@ var styles = {
 };
 
 var TouchableOpacity = function (_a) {
-    var children = _a.children, idx = _a.idx, onPress = _a.onPress, ref = _a.ref, style = _a.style;
+    var children = _a.children, onPress = _a.onPress, style = _a.style, props = __rest(_a, ["children", "onPress", "style"]);
     var handleOnpress = function () {
         if (onPress)
             onPress();
     };
-    return (jsxRuntimeExports.jsx("div", __assign({ onClick: handleOnpress, ref: ref && ref, style: __assign(__assign({}, styles.content), style) }, { children: children }), idx && idx));
+    return (jsxRuntimeExports.jsx("div", __assign({ onClick: handleOnpress, style: __assign(__assign({}, styles.content), style) }, props, { children: children })));
 };
 
-var View = function (_a) {
-    var _b = _a.bottom, bottom = _b === void 0 ? 0 : _b, children = _a.children, _c = _a.display, display = _c === void 0 ? 'flex' : _c, _d = _a.flexDirection, flexDirection = _d === void 0 ? 'column' : _d, _e = _a.left, left = _e === void 0 ? 0 : _e, _f = _a.ref, ref = _f === void 0 ? null : _f, _g = _a.right, right = _g === void 0 ? 0 : _g, _h = _a.style, style = _h === void 0 ? {} : _h, _j = _a.top, top = _j === void 0 ? 0 : _j;
-    return (jsxRuntimeExports.jsx("div", __assign({ ref: ref, style: __assign({ display: display, flexDirection: flexDirection, marginTop: top, marginRight: right, marginBottom: bottom, marginLeft: left }, style) }, { children: children })));
-};
-
-export { TouchableOpacity, View };
+export { Button, Colors, Countdown as CountDown, DropDown, Image, LoadingSpinner, PopUp, Swipeable, Text, TextInput, TouchableOpacity, View };
 //# sourceMappingURL=index.es.js.map
