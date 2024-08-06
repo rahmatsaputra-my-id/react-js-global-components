@@ -13,20 +13,22 @@ const View: FC<IViewProps> = ({
   top = 0,
   ...props
 }: IViewProps) => (
-  <div
-    style={{
-      display,
-      flexDirection,
-      marginTop: top,
-      marginRight: right,
-      marginBottom: bottom,
-      marginLeft: left,
-      ...style,
-    }}
-    {...props}
-  >
-    {children}
-  </div>
+  <>
+    <div
+      style={{
+        display,
+        flexDirection,
+        marginTop: top,
+        marginRight: right,
+        marginBottom: bottom,
+        marginLeft: left,
+        ...style,
+      }}
+      {...props}
+    >
+      {children}
+    </div>
+  </>
 );
 
 export default View;

@@ -1,4 +1,6 @@
-export const Colors: any = {
+import { IColorsOption } from './Color.types';
+
+export const Colors: IColorsOption = {
   black: '#000000',
   blackTransparent15: 'rgba(0, 0, 0, 0.15)',
   blackTransparent7: 'rgba(0, 0, 0, 0.7)',

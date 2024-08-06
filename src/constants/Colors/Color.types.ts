@@ -1,0 +1,56 @@
+export interface IColorsOption {
+  black: string;
+  blackTransparent15: string;
+  blackTransparent7: string;
+  black100: string;
+  blue: string;
+  blueTransparent: string;
+  backgroundColor: string;
+  backgroundColorModal: string;
+  boxShadow: string;
+  boxShadowCard: string;
+  boxShadowImage: string;
+  brownishGrey: string;
+  darkBlue: string;
+  darkBlueBlack: string;
+  darkBlueWhite: string;
+  gradientWhite: string;
+  green1: string;
+  green50: string;
+  green60: string;
+  green100: string;
+  grey2: string;
+  grey3: string;
+  grey4: string;
+  grey5: string;
+  grey6: string;
+  grey7: string;
+  grey8: string;
+  grey75: string;
+  grey80: string;
+  lightishRed: string;
+  orange: string;
+  orange50: string;
+  palePeach: string;
+  platinum: string;
+  pink: string;
+  red: string;
+  red50: string;
+  red60: string;
+  red100: string;
+  red150: string;
+  red200: string;
+  redTransparent: string;
+  shadow: string;
+  shadow10: string;
+  white: string;
+  whiteTransparent: string;
+  white25: string;
+  white50: string;
+  white75: string;
+  theShop: theShop;
+}
+
+type theShop = {
+  primary?: string;
+};
