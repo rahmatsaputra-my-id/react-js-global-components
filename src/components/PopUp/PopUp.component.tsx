@@ -5,8 +5,14 @@ import { Button } from '../Button';
 
 import { IPopUpProps } from './PopUp.types';
 import { styles } from './PopUp.component.styles';
+import { Colors } from '../../constants/Colors';
 
-const PopUp: FC<IPopUpProps> = ({ popUpData, isLoading = false, visible = false }: IPopUpProps) =>
+const PopUp: FC<IPopUpProps> = ({
+  backgroundButtonColor = Colors.black,
+  isLoading = false,
+  popUpData,
+  visible = false,
+}: IPopUpProps) =>
   visible ? (
     <View style={styles.container}>
       <View style={styles.card}>
@@ -17,6 +23,7 @@ const PopUp: FC<IPopUpProps> = ({ popUpData, isLoading = false, visible = false 
         </View>
 
         <Button
+          backgroundColor={backgroundButtonColor}
           isLoading={isLoading}
           label={popUpData?.labelAccept}
           onPress={popUpData?.onPressAccept}

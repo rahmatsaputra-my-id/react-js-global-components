@@ -1,12 +1,13 @@
 export interface IPopUpProps {
-  popUpData?: TpopUpData;
+  backgroundButtonColor?: string;
   isLoading?: boolean;
+  popUpData?: TpopUpData;
   visible?: boolean;
 }
 
 export type TpopUpData = {
-  title?: string;
   description?: string;
   labelAccept?: string;
   onPressAccept?: any;
+  title?: string;
 };
