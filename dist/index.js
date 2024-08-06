@@ -4290,7 +4290,7 @@ var styles$5 = {
 
 var View = function (_a) {
     var _b = _a.bottom, bottom = _b === void 0 ? 0 : _b, children = _a.children, _c = _a.display, display = _c === void 0 ? 'flex' : _c, _d = _a.flexDirection, flexDirection = _d === void 0 ? 'column' : _d, _e = _a.left, left = _e === void 0 ? 0 : _e, _f = _a.right, right = _f === void 0 ? 0 : _f, _g = _a.style, style = _g === void 0 ? {} : _g, _h = _a.top, top = _h === void 0 ? 0 : _h, props = __rest(_a, ["bottom", "children", "display", "flexDirection", "left", "right", "style", "top"]);
-    return (jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: jsxRuntimeExports.jsx("div", __assign({ style: __assign({ display: display, flexDirection: flexDirection, marginTop: top, marginRight: right, marginBottom: bottom, marginLeft: left }, style) }, props, { children: children })) }));
+    return (jsxRuntimeExports.jsx("div", __assign({ style: __assign({ display: display, flexDirection: flexDirection, marginTop: top, marginRight: right, marginBottom: bottom, marginLeft: left }, style) }, props, { children: children })));
 };
 
 var styles$4 = {
