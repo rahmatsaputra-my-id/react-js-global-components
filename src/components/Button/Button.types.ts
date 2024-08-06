@@ -1,5 +1,5 @@
 export interface IButtonProps {
-  backgroundColor: string;
+  backgroundColor?: string;
   bold?: boolean;
   borderRadius?: number;
   bottom?: number;
