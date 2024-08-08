@@ -52,5 +52,5 @@ export interface IColorsOption {
 }
 
 type theShop = {
-  primary?: '#227AEA';
+  primary?: '#2e3135';
 };
