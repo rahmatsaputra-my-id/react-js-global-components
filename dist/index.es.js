@@ -4268,7 +4268,7 @@ var Colors = {
     white50: '#F5F9FC',
     white75: '#E6E6E6',
     theShop: {
-        primary: '#227AEA',
+        primary: '#2e3135',
     },
 };
 
