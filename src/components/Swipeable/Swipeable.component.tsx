@@ -10,7 +10,6 @@ const Swipeable = ({
   ...props
 }: ISwipeableProps): ReactNode => {
   const [startX, setStartX] = useState(null);
-  const [threshold, setThreshold] = useState(50); // Minimum swipe distance (pixels)
 
   const handleTouchStart = (event: any) => {
     setStartX(event?.touches?.[0]?.clientX); // Store initial touch position (X-coordinate)
@@ -21,9 +20,9 @@ const Swipeable = ({
       const endX = event?.changedTouches?.[0]?.clientX;
       const deltaX = endX - startX;
 
-      if (deltaX > threshold) {
+      if (deltaX > 50) {
         onSwipeLeft();
-      } else if (deltaX < -threshold) {
+      } else if (deltaX < -50) {
         onSwipeRight();
       }
 
