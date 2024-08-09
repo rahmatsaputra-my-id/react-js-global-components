@@ -4582,6 +4582,7 @@ var styles = {
     content: {
         display: 'flex',
         cursor: 'pointer',
+        flexDirection: 'column',
     },
 };
 
