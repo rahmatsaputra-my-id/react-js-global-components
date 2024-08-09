@@ -10,10 +10,10 @@ export declare const styles: {
         backgroundColor: string;
     };
     card: {
-        boxShadow: string;
+        boxShadow: "1px 2px 9px #000" | undefined;
         padding: number;
         borderRadius: number;
-        backgroundColor: string;
+        backgroundColor: "#E5E5E5" | undefined;
         width: number;
         justifyContent: string;
     };

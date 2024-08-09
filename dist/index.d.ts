@@ -1,4 +1,5 @@
 export * from './components/Button';
+export * from './components/Container';
 export * from './components/CountDown';
 export * from './components/DropDown';
 export * from './components/Image';

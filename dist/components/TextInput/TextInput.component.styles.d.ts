@@ -6,7 +6,7 @@ export declare const styles: {
     labelError: {
         marginTop: number;
         fontSize: number;
-        color: string;
+        color: "#D45757" | undefined;
         maxWidth: number;
     };
     textArea: {

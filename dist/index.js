@@ -4276,7 +4276,7 @@ var Colors = {
     },
 };
 
-var styles$5 = {
+var styles$6 = {
     content: {
         display: 'flex',
         justifyContent: 'center',
@@ -4293,7 +4293,7 @@ var View = function (_a) {
     return (jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: jsxRuntimeExports.jsx("div", __assign({ style: __assign({ display: display, flexDirection: flexDirection, marginTop: top, marginRight: right, marginBottom: bottom, marginLeft: left }, style) }, props, { children: children })) }));
 };
 
-var styles$4 = {
+var styles$5 = {
     content: {
         display: 'flex',
         justifyContent: 'center',
@@ -4343,8 +4343,8 @@ styleInject(css_248z);
 var LoadingSpinner = function (_a) {
     var _b = _a.loadingType, loadingType = _b === void 0 ? false : _b;
     var _renderSpinnerComponent = function () { return jsxRuntimeExports.jsx("div", { className: "loading-spinner" }); };
-    var _renderSpinnerSection = function () { return (jsxRuntimeExports.jsx(View, __assign({ style: styles$4.loadingSpinnerContainer }, { children: jsxRuntimeExports.jsx("div", { className: "loading-spinner-section" }) }))); };
-    var _renderSpinnerPage = function () { return (jsxRuntimeExports.jsx(View, __assign({ style: styles$4.loadingSpinnerContainer }, { children: jsxRuntimeExports.jsx("div", { className: "loading-spinner-page" }) }))); };
+    var _renderSpinnerSection = function () { return (jsxRuntimeExports.jsx(View, __assign({ style: styles$5.loadingSpinnerContainer }, { children: jsxRuntimeExports.jsx("div", { className: "loading-spinner-section" }) }))); };
+    var _renderSpinnerPage = function () { return (jsxRuntimeExports.jsx(View, __assign({ style: styles$5.loadingSpinnerContainer }, { children: jsxRuntimeExports.jsx("div", { className: "loading-spinner-page" }) }))); };
     return (jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: loadingType === 'page'
             ? _renderSpinnerPage()
             : loadingType === 'section'
@@ -4360,7 +4360,25 @@ var Button = function (_a) {
                         ? 'transparent'
                         : backgroundColor
                             ? backgroundColor
-                            : Colors.black, borderRadius: borderRadius, color: Colors.white, fontSize: size, fontWeight: bold && 'bold', marginTop: top, marginRight: right, marginBottom: bottom, marginLeft: left, padding: padding, textAlign: center ? 'center' : 'left' }, style), styles$5.content), disabled: isLoading || disabled, onClick: onPress, type: 'submit' }, props, { children: [!isLoading ? label : null, isLoading && jsxRuntimeExports.jsx(LoadingSpinner, { loadingType: false })] })) }));
+                            : Colors.black, borderRadius: borderRadius, color: Colors.white, fontSize: size, fontWeight: bold && 'bold', marginTop: top, marginRight: right, marginBottom: bottom, marginLeft: left, padding: padding, textAlign: center ? 'center' : 'left' }, style), styles$6.content), disabled: isLoading || disabled, onClick: onPress, type: 'submit' }, props, { children: [!isLoading ? label : null, isLoading && jsxRuntimeExports.jsx(LoadingSpinner, { loadingType: false })] })) }));
+};
+
+var styles$4 = {
+    container: {
+        flex: 1,
+        minHeight: '100vh',
+        alignItems: 'center',
+    },
+    content: {
+        maxWidth: window.innerWidth > 426 ? 1200 : 425,
+        flex: 1,
+        width: '100%',
+    },
+};
+
+var Container = function (_a) {
+    var children = _a.children, containerStyle = _a.containerStyle, contentStyle = _a.contentStyle;
+    return (jsxRuntimeExports.jsx(View, __assign({ style: __assign(__assign({}, styles$4.container), { containerStyle: containerStyle }) }, { children: jsxRuntimeExports.jsx(View, __assign({ style: __assign(__assign({}, styles$4.content), { contentStyle: contentStyle }) }, { children: children })) })));
 };
 
 var reactExports = requireReact();
@@ -4509,7 +4527,6 @@ var PopUp = function (_a) {
 var Swipeable = function (_a) {
     var children = _a.children, _b = _a.onSwipeLeft, onSwipeLeft = _b === void 0 ? function () { } : _b, _c = _a.onSwipeRight, onSwipeRight = _c === void 0 ? function () { } : _c, _d = _a.style, style = _d === void 0 ? {} : _d, props = __rest(_a, ["children", "onSwipeLeft", "onSwipeRight", "style"]);
     var _e = reactExports.useState(null), startX = _e[0], setStartX = _e[1];
-    var _f = reactExports.useState(50), threshold = _f[0]; _f[1]; // Minimum swipe distance (pixels)
     var handleTouchStart = function (event) {
         var _a, _b;
         setStartX((_b = (_a = event === null || event === void 0 ? void 0 : event.touches) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.clientX); // Store initial touch position (X-coordinate)
@@ -4519,10 +4536,10 @@ var Swipeable = function (_a) {
         if (startX !== null) {
             var endX = (_b = (_a = event === null || event === void 0 ? void 0 : event.changedTouches) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.clientX;
             var deltaX = endX - startX;
-            if (deltaX > threshold) {
+            if (deltaX > 50) {
                 onSwipeLeft();
             }
-            else if (deltaX < -threshold) {
+            else if (deltaX < -50) {
                 onSwipeRight();
             }
             setStartX(null); // Reset touch position for next swipe
@@ -4576,6 +4593,7 @@ var TouchableOpacity = function (_a) {
 
 exports.Button = Button;
 exports.Colors = Colors;
+exports.Container = Container;
 exports.CountDown = Countdown;
 exports.DropDown = DropDown;
 exports.Image = Image;

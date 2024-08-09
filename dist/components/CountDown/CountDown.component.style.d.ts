@@ -5,7 +5,7 @@ export declare const styles: {
         justifyContent: string;
     };
     cardBox: {
-        backgroundColor: string;
+        backgroundColor: "rgba(250, 250, 250, 1)" | undefined;
         alignItems: string;
         paddingTop: number;
         paddingBottom: number;
@@ -14,17 +14,17 @@ export declare const styles: {
         borderRadius: number;
         borderWidth: number;
         borderStyle: string;
-        borderColor: string;
+        borderColor: "#A56767" | undefined;
     };
     cardTitle: {
-        color: string;
+        color: "#A56767" | undefined;
         fontSize: number;
         textAlign: string;
         lineHeight: number;
         marginBottom: number;
     };
     cardDescription: {
-        color: string;
+        color: "#A56767" | undefined;
         fontSize: number;
         textAlign: string;
         lineHeight: number;
